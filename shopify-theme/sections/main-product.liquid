@@ -1,0 +1,358 @@
+<section class="product-page" data-section-id="{{ section.id }}">
+  <div class="container-book product-page__breadcrumb-wrap">
+    <nav class="product-page__breadcrumb" aria-label="Breadcrumb">
+      <a href="{{ routes.root_url }}" class="product-page__breadcrumb-link">Home</a>
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      <a href="{{ routes.all_products_collection_url }}" class="product-page__breadcrumb-link">Shop</a>
+      {% if collection %}
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <a href="{{ collection.url }}" class="product-page__breadcrumb-link">{{ collection.title }}</a>
+      {% endif %}
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      <span class="product-page__breadcrumb-current">{{ product.title | truncate: 40 }}</span>
+    </nav>
+  </div>
+
+  <div class="container-book product-page__main">
+    <div class="product-page__grid">
+      {%- comment -%} Image {%- endcomment -%}
+      <div class="product-page__image-wrap">
+        <div class="product-page__image-container">
+          {% if product.featured_image != blank %}
+            <img
+              src="{{ product.featured_image | image_url: width: 600 }}"
+              alt="{{ product.title | escape }}"
+              class="product-page__image"
+              id="ProductImage"
+              width="{{ product.featured_image.width }}"
+              height="{{ product.featured_image.height }}"
+            >
+          {% else %}
+            <div class="product-page__image-fallback book-cover-fallback" style="background: var(--ink-800); width: 224px; height: 320px;">
+              <div class="cover-border" style="border-color: var(--gold-400);"></div>
+              <div class="cover-divider" style="background: var(--gold-400);"></div>
+              <span class="cover-title" style="color: var(--gold-400); font-size: 1.25rem;">{{ product.title | truncate: 40 }}</span>
+              <div class="cover-divider-bottom" style="background: var(--gold-400);"></div>
+              {% if product.vendor %}
+                <span class="cover-author" style="color: var(--gold-400);">by {{ product.vendor | truncate: 25 }}</span>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+
+        {% if product.images.size > 1 %}
+          <div class="product-page__thumbs">
+            {% for image in product.images limit: 6 %}
+              <button class="product-page__thumb" data-thumb-index="{{ forloop.index0 }}" onclick="document.getElementById('ProductImage').src='{{ image | image_url: width: 600 }}'; document.querySelectorAll('.product-page__thumb').forEach(t=>t.classList.remove('is-active')); this.classList.add('is-active');">
+                <img src="{{ image | image_url: width: 100 }}" alt="{{ product.title | escape }} - image {{ forloop.index }}" loading="lazy">
+              </button>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      {%- comment -%} Product info {%- endcomment -%}
+      <div class="product-page__info">
+        <div class="product-page__tags">
+          {% if product.type != blank %}
+            <span class="badge badge-gold">{{ product.type }}</span>
+          {% endif %}
+          {% if product.tags contains 'featured' %}
+            <span class="badge badge-saffron">Featured</span>
+          {% endif %}
+        </div>
+
+        <h1 class="product-page__title">{{ product.title }}</h1>
+
+        {% if product.vendor != blank %}
+          <p class="product-page__vendor">by {{ product.vendor }}</p>
+        {% endif %}
+
+        <div class="product-page__meta">
+          {% if product.metafields.custom.publication != blank %}
+            <span>{{ product.metafields.custom.publication }}</span>
+            <span class="product-page__meta-dot">&middot;</span>
+          {% endif %}
+          {% if product.type != blank %}
+            <span>{{ product.type }}</span>
+          {% endif %}
+        </div>
+
+        <div class="product-page__price-wrap">
+          <span class="product-page__price">{{ product.price | money }}</span>
+          {% if product.compare_at_price > product.price %}
+            <span class="product-page__compare">{{ product.compare_at_price | money }}</span>
+            <span class="product-page__save">Save {{ product.compare_at_price | minus: product.price | money }}</span>
+          {% endif %}
+        </div>
+
+        <div class="product-page__availability">
+          {% if product.available %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22863a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Available</span>
+          {% else %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ink-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            <span>Currently unavailable</span>
+          {% endif %}
+        </div>
+
+        <form action="{{ routes.cart_add_url }}" method="post" data-product-form class="product-page__form">
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+          {% unless product.has_only_default_variant %}
+            <div class="product-page__variants">
+              {% for option in product.options_with_values %}
+                <div class="product-page__variant">
+                  <label class="label-book">{{ option.name }}</label>
+                  <select name="options[{{ option.name | escape }}]" class="input-book product-page__variant-select" data-variant-option="{{ option.position }}">
+                    {% for value in option.values %}
+                      <option value="{{ value | escape }}" {% if option.selected_value == value %}selected{% endif %}>{{ value }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              {% endfor %}
+            </div>
+          {% endunless %}
+
+          <div class="product-page__actions">
+            <div class="product-page__quantity" data-quantity-wrapper>
+              <button type="button" class="product-page__qty-btn" data-quantity-minus aria-label="Decrease quantity">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+              <input type="number" name="quantity" value="1" min="1" class="product-page__qty-input" data-quantity-input aria-label="Quantity">
+              <button type="button" class="product-page__qty-btn" data-quantity-plus aria-label="Increase quantity">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+            </div>
+
+            <button type="submit" name="add" class="btn-primary product-page__add-btn" data-add-to-cart-btn {% unless product.available %}disabled{% endunless %}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              {% if product.available %}Add to Cart{% else %}Sold Out{% endif %}
+            </button>
+          </div>
+        </form>
+
+        <a href="{{ routes.cart_url }}?checkout" class="btn-gold product-page__buy-now" {% unless product.available %}style="pointer-events:none;opacity:0.5;"{% endunless %}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Buy Now
+        </a>
+
+        <div class="product-page__quick-info">
+          <div class="product-page__quick-info-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-700)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M14 9h4l3 3v5a1 1 0 0 1-1 1h-2"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+            <span>Pan-India delivery via DTDC &middot; Shipping per courier rates</span>
+          </div>
+        </div>
+
+        {%- comment -%} Tabs {%- endcomment -%}
+        <div class="product-page__tabs">
+          <div class="product-page__tab-nav">
+            <button class="product-page__tab is-active" data-tab="description">Description</button>
+            <button class="product-page__tab" data-tab="details">Book Details</button>
+            <button class="product-page__tab" data-tab="shipping">Shipping Information</button>
+          </div>
+
+          <div class="product-page__tab-content" data-tab-content="description">
+            <div class="product-page__description rte">
+              {{ product.description }}
+            </div>
+          </div>
+
+          <div class="product-page__tab-content" data-tab-content="details" style="display:none;">
+            <div class="product-page__details-grid">
+              <div class="product-page__detail-row">
+                <span class="product-page__detail-label">Title</span>
+                <span class="product-page__detail-value">{{ product.title }}</span>
+              </div>
+              {% if product.vendor != blank %}
+                <div class="product-page__detail-row">
+                  <span class="product-page__detail-label">Author</span>
+                  <span class="product-page__detail-value">{{ product.vendor }}</span>
+                </div>
+              {% endif %}
+              {% if product.metafields.custom.publication != blank %}
+                <div class="product-page__detail-row">
+                  <span class="product-page__detail-label">Publication</span>
+                  <span class="product-page__detail-value">{{ product.metafields.custom.publication }}</span>
+                </div>
+              {% endif %}
+              {% if product.type != blank %}
+                <div class="product-page__detail-row">
+                  <span class="product-page__detail-label">Language</span>
+                  <span class="product-page__detail-value">{{ product.type }}</span>
+                </div>
+              {% endif %}
+              {% if product.metafields.custom.format != blank %}
+                <div class="product-page__detail-row">
+                  <span class="product-page__detail-label">Format</span>
+                  <span class="product-page__detail-value">{{ product.metafields.custom.format }}</span>
+                </div>
+              {% endif %}
+              {% if product.metafields.custom.pages != blank %}
+                <div class="product-page__detail-row">
+                  <span class="product-page__detail-label">Pages</span>
+                  <span class="product-page__detail-value">{{ product.metafields.custom.pages }}</span>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="product-page__tab-content" data-tab-content="shipping" style="display:none;">
+            <div class="product-page__shipping-info">
+              <p>We ship across India via DTDC courier service.</p>
+              <p>Shipping charges are according to the courier company and are based on the delivery location. There is no free shipping.</p>
+              <p>Delivery time depends on the courier company and the destination.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.product-page__breadcrumb-wrap { padding: 1rem 0; border-bottom: 1px solid rgba(168, 145, 119, 0.1); }
+.product-page__breadcrumb { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--ink-500); flex-wrap: wrap; }
+.product-page__breadcrumb-link { color: var(--ink-500); transition: color 0.2s ease; }
+.product-page__breadcrumb-link:hover { color: var(--gold-700); }
+.product-page__breadcrumb-current { color: var(--ink-800); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.product-page__main { padding: 2.5rem 0; }
+@media (min-width: 1024px) { .product-page__main { padding: 4rem 0; } }
+
+.product-page__grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
+@media (min-width: 1024px) { .product-page__grid { grid-template-columns: 1fr 1fr; gap: 4rem; } }
+
+.product-page__image-wrap { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+.product-page__image-container {
+  display: flex; justify-content: center; align-items: center;
+  background: rgba(245, 239, 227, 0.4); padding: 3rem 2rem;
+  border: 1px solid rgba(168, 145, 119, 0.1); width: 100%;
+}
+@media (min-width: 1024px) { .product-page__image-container { padding: 4rem; } }
+.product-page__image { max-height: 500px; width: auto; box-shadow: var(--shadow-warm-lg); }
+.product-page__image-fallback { width: 224px; height: 320px; }
+
+.product-page__thumbs { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
+.product-page__thumb { width: 64px; height: 64px; border: 2px solid rgba(168, 145, 119, 0.15); overflow: hidden; transition: border-color 0.2s ease; }
+.product-page__thumb.is-active { border-color: var(--gold-600); }
+.product-page__thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+.product-page__info { display: flex; flex-direction: column; }
+.product-page__tags { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; }
+
+.product-page__title { font-family: var(--font-display); font-size: 1.875rem; line-height: 1.2; color: var(--ink-900); }
+@media (min-width: 1024px) { .product-page__title { font-size: 2.25rem; } }
+
+.product-page__vendor { margin-top: 0.5rem; font-size: 1.125rem; color: var(--ink-600); }
+
+.product-page__meta { display: flex; align-items: center; gap: 0.75rem; margin-top: 1rem; font-size: 0.875rem; color: var(--ink-500); }
+.product-page__meta-dot { color: var(--brown-500); }
+
+.product-page__price-wrap { display: flex; align-items: baseline; gap: 0.75rem; margin-top: 1.5rem; }
+.product-page__price { font-family: var(--font-serif); font-size: 1.875rem; color: var(--ink-900); }
+.product-page__compare { font-size: 1.125rem; color: var(--ink-400); text-decoration: line-through; }
+.product-page__save { font-size: 0.875rem; color: var(--saffron-600); font-weight: 500; }
+
+.product-page__availability { display: flex; align-items: center; gap: 0.5rem; margin-top: 1.5rem; font-size: 0.875rem; color: var(--ink-600); }
+
+.product-page__variants { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+.product-page__variant-select { cursor: pointer; }
+
+.product-page__actions { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+@media (min-width: 640px) { .product-page__actions { flex-direction: row; } }
+
+.product-page__quantity { display: flex; align-items: center; border: 1px solid rgba(168, 145, 119, 0.3); }
+.product-page__qty-btn { padding: 0.875rem; color: var(--ink-600); transition: color 0.2s ease; }
+.product-page__qty-btn:hover { color: var(--ink-900); }
+.product-page__qty-input { width: 3.5rem; text-align: center; border: none; background: transparent; font-size: 1rem; color: var(--ink-800); -moz-appearance: textfield; }
+.product-page__qty-input::-webkit-outer-spin-button, .product-page__qty-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+.product-page__add-btn { flex: 1; }
+
+.product-page__buy-now { width: 100%; margin-top: 0.75rem; }
+
+.product-page__quick-info { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(168, 145, 119, 0.1); display: flex; flex-direction: column; gap: 0.75rem; }
+.product-page__quick-info-item { display: flex; align-items: center; gap: 0.75rem; font-size: 0.875rem; color: var(--ink-600); }
+.product-page__quick-info-item svg { flex-shrink: 0; }
+
+.product-page__tabs { margin-top: 3.5rem; }
+@media (min-width: 1024px) { .product-page__tabs { margin-top: 5rem; } }
+.product-page__tab-nav { display: flex; gap: 2rem; border-bottom: 1px solid rgba(168, 145, 119, 0.15); }
+.product-page__tab { padding-bottom: 0.75rem; font-size: 0.875rem; letter-spacing: 0.025em; color: var(--ink-500); transition: color 0.2s ease; position: relative; }
+.product-page__tab:hover { color: var(--ink-700); }
+.product-page__tab.is-active { color: var(--ink-900); }
+.product-page__tab.is-active::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 2px; background: var(--gold-600); }
+
+.product-page__tab-content { padding: 2rem 0; max-width: 48rem; }
+.product-page__description { color: var(--ink-700); line-height: 1.7; font-size: 1rem; }
+.product-page__description p { margin-bottom: 1rem; }
+
+.product-page__details-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+@media (min-width: 640px) { .product-page__details-grid { grid-template-columns: 1fr 1fr; gap: 1rem 3rem; } }
+.product-page__detail-row { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(168, 145, 119, 0.1); padding-bottom: 0.5rem; }
+.product-page__detail-label { font-size: 0.875rem; color: var(--ink-500); }
+.product-page__detail-value { font-size: 0.875rem; color: var(--ink-800); font-weight: 500; }
+
+.product-page__shipping-info { color: var(--ink-700); line-height: 1.7; display: flex; flex-direction: column; gap: 1rem; }
+</style>
+
+<script>
+  (function() {
+    var section = document.querySelector('[data-section-id="{{ section.id }}"]');
+    if (!section) return;
+
+    // Tab switching
+    var tabs = section.querySelectorAll('.product-page__tab');
+    var contents = section.querySelectorAll('.product-page__tab-content');
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        var target = tab.getAttribute('data-tab');
+        tabs.forEach(function(t) { t.classList.remove('is-active'); });
+        contents.forEach(function(c) { c.style.display = 'none'; });
+        tab.classList.add('is-active');
+        var content = section.querySelector('[data-tab-content="' + target + '"]');
+        if (content) content.style.display = 'block';
+      });
+    });
+
+    // Variant selection
+    var selects = section.querySelectorAll('.product-page__variant-select');
+    var hiddenId = section.querySelector('input[name="id"]');
+    if (selects.length > 0 && hiddenId) {
+      var variants = {{ product.variants | json }};
+      selects.forEach(function(sel) {
+        sel.addEventListener('change', function() {
+          var selected = {};
+          selects.forEach(function(s) {
+            var pos = s.getAttribute('data-variant-option');
+            selected['option' + pos] = s.value;
+          });
+          var match = variants.find(function(v) {
+            return v.option1 === selected.option1 && v.option2 === selected.option2 && v.option3 === selected.option3;
+          });
+          if (match) {
+            hiddenId.value = match.id;
+            var addBtn = section.querySelector('[data-add-to-cart-btn]');
+            if (addBtn) {
+              if (match.available) {
+                addBtn.disabled = false;
+                addBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> Add to Cart';
+              } else {
+                addBtn.disabled = true;
+                addBtn.innerHTML = 'Sold Out';
+              }
+            }
+          }
+        });
+      });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Product",
+  "settings": []
+}
+{% endschema %}

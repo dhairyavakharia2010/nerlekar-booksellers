@@ -1,0 +1,124 @@
+<footer class="site-footer">
+  <div class="container-book site-footer__inner">
+    <div class="site-footer__grid">
+
+      {%- comment -%} Brand {%- endcomment -%}
+      <div class="site-footer__brand">
+        <div class="site-footer__brand-name">
+          <div class="site-footer__brand-line-1">{{ settings.brand_line_1 }}</div>
+          <div class="site-footer__brand-line-2">{{ settings.brand_line_2 }}</div>
+          <div class="site-footer__brand-line-3">{{ settings.brand_line_3 }}</div>
+          <div class="site-footer__brand-line-4">{{ settings.brand_line_4 }}</div>
+        </div>
+        <p class="site-footer__tagline">
+          A bookstore dedicated to religious, spiritual, and Sanskrit literature in Marathi, Hindi, and Sanskrit.
+        </p>
+      </div>
+
+      {%- comment -%} Shop links {%- endcomment -%}
+      <div class="site-footer__col">
+        <h4 class="site-footer__heading">Shop</h4>
+        <ul class="site-footer__links">
+          <li><a href="{{ routes.all_products_collection_url }}">All Books</a></li>
+          {% for collection in collections limit: 4 %}
+            <li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      {%- comment -%} Info links {%- endcomment -%}
+      <div class="site-footer__col">
+        <h4 class="site-footer__heading">Information</h4>
+        <ul class="site-footer__links">
+          <li><a href="{{ pages['about'].url | default: '#' }}">About Us</a></li>
+          <li><a href="{{ pages['contact'].url | default: '#' }}">Contact</a></li>
+          <li><a href="{{ pages['shipping-delivery'].url | default: '#' }}">Shipping &amp; Delivery</a></li>
+          <li><a href="{{ pages['returns-cancellations'].url | default: '#' }}">Returns &amp; Cancellations</a></li>
+        </ul>
+      </div>
+
+      {%- comment -%} Store info {%- endcomment -%}
+      <div class="site-footer__col">
+        <h4 class="site-footer__heading">Visit Our Stores</h4>
+        <div class="site-footer__stores">
+          <div class="site-footer__store">
+            <p class="site-footer__store-name">{{ settings.store_1_name }}</p>
+            <p class="site-footer__store-address">{{ settings.store_1_address }}</p>
+            <p class="site-footer__store-address">Pune, Maharashtra</p>
+            <a href="tel:{{ settings.store_1_phone }}" class="site-footer__store-contact">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              {{ settings.store_1_phone }}
+            </a>
+            <a href="https://wa.me/{{ settings.whatsapp_number }}" target="_blank" rel="noopener noreferrer" class="site-footer__store-contact">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              WhatsApp
+            </a>
+            <a href="mailto:{{ settings.contact_email }}" class="site-footer__store-contact">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              {{ settings.contact_email }}
+            </a>
+          </div>
+          <div class="site-footer__store">
+            <p class="site-footer__store-name">{{ settings.store_2_name }}</p>
+            <p class="site-footer__store-address">{{ settings.store_2_address }}</p>
+            <p class="site-footer__store-address">Pune, Maharashtra</p>
+            <a href="tel:{{ settings.store_2_phone }}" class="site-footer__store-contact">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              {{ settings.store_2_phone }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>&copy; {{ 'now' | date: '%Y' }} Ashok Anant Nerlekar Booksellers &middot; Pradnyesh Prakashan &middot; Shri Krupa Enterprises. All rights reserved.</p>
+      <p class="site-footer__bottom-tagline">Religious &amp; Spiritual Literature &middot; Pune, India</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+.site-footer { background: var(--ink-900); color: rgba(245, 239, 227, 0.7); margin-top: 5rem; }
+.site-footer__inner { padding: 4rem 0; }
+.site-footer__grid {
+  display: grid; grid-template-columns: 1fr; gap: 2.5rem;
+}
+@media (min-width: 768px) { .site-footer__grid { grid-template-columns: 1fr 1fr; gap: 3.5rem; } }
+@media (min-width: 1024px) { .site-footer__grid { grid-template-columns: 1fr 1fr 1fr 1fr; gap: 3.5rem; } }
+
+.site-footer__brand-line-1 { font-family: var(--font-display); font-size: 1.0625rem; letter-spacing: 0.15em; color: var(--parchment-100); }
+.site-footer__brand-line-2 { font-family: var(--font-display); font-size: 1rem; letter-spacing: 0.25em; color: rgba(245, 239, 227, 0.8); }
+.site-footer__brand-line-3 { font-size: 0.625rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-400); margin-top: 0.25rem; }
+.site-footer__brand-line-4 { font-size: 0.625rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(245, 239, 227, 0.4); margin-top: 0.125rem; }
+.site-footer__tagline { font-size: 0.875rem; color: rgba(245, 239, 227, 0.5); line-height: 1.6; margin-top: 1rem; max-width: 20rem; }
+
+.site-footer__heading {
+  font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold-400); margin-bottom: 1rem; font-family: var(--font-sans); font-weight: 500;
+}
+.site-footer__links li { margin-bottom: 0.625rem; }
+.site-footer__links a { font-size: 0.875rem; color: rgba(245, 239, 227, 0.5); transition: color 0.2s ease; }
+.site-footer__links a:hover { color: var(--parchment-100); }
+
+.site-footer__stores { display: flex; flex-direction: column; gap: 1rem; }
+.site-footer__store-name { font-size: 0.875rem; font-weight: 500; color: rgba(245, 239, 227, 0.8); }
+.site-footer__store-address { font-size: 0.75rem; color: rgba(245, 239, 227, 0.5); margin-top: 0.125rem; }
+.site-footer__store-contact {
+  display: flex; align-items: center; gap: 0.375rem;
+  font-size: 0.75rem; color: rgba(245, 239, 227, 0.5);
+  margin-top: 0.25rem; transition: color 0.2s ease;
+}
+.site-footer__store-contact svg { color: var(--gold-400); flex-shrink: 0; }
+.site-footer__store-contact:hover { color: var(--parchment-100); }
+
+.site-footer__bottom {
+  margin-top: 3rem; padding-top: 2rem;
+  border-top: 1px solid rgba(250, 246, 239, 0.1);
+  display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 1rem;
+  text-align: center;
+}
+@media (min-width: 640px) { .site-footer__bottom { flex-direction: row; text-align: left; } }
+.site-footer__bottom p { font-size: 0.75rem; color: rgba(245, 239, 227, 0.5); }
+.site-footer__bottom-tagline { color: rgba(245, 239, 227, 0.4); }
+</style>

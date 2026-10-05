@@ -1,0 +1,281 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Nerlekar Booksellers",
+    "theme_version": "1.0.0",
+    "theme_author": "Ashok Anant Nerlekar Booksellers",
+    "theme_documentation_url": "https://nerlekarbooksellers.in",
+    "theme_support_url": "https://nerlekarbooksellers.in"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Background"
+      },
+      {
+        "type": "color",
+        "id": "bg_parchment_100",
+        "label": "Page Background",
+        "default": "#FAF6EF"
+      },
+      {
+        "type": "color",
+        "id": "bg_parchment_50",
+        "label": "Card Background",
+        "default": "#FDFBF7"
+      },
+      {
+        "type": "color",
+        "id": "bg_parchment_200",
+        "label": "Section Background",
+        "default": "#F5EFE3"
+      },
+      {
+        "type": "header",
+        "content": "Ink / Text"
+      },
+      {
+        "type": "color",
+        "id": "ink_900",
+        "label": "Darkest",
+        "default": "#1F140D"
+      },
+      {
+        "type": "color",
+        "id": "ink_800",
+        "label": "Dark",
+        "default": "#2A1B12"
+      },
+      {
+        "type": "color",
+        "id": "ink_600",
+        "label": "Body Text",
+        "default": "#5C4A3A"
+      },
+      {
+        "type": "header",
+        "content": "Gold"
+      },
+      {
+        "type": "color",
+        "id": "gold_600",
+        "label": "Gold Primary",
+        "default": "#B8860B"
+      },
+      {
+        "type": "color",
+        "id": "gold_400",
+        "label": "Gold Light",
+        "default": "#D4AF37"
+      },
+      {
+        "type": "header",
+        "content": "Brown / Borders"
+      },
+      {
+        "type": "color",
+        "id": "brown_500",
+        "label": "Brown Border",
+        "default": "#A89177"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Google Fonts"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_google_fonts",
+        "label": "Load Google Fonts",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "heading_font",
+        "label": "Heading Font",
+        "default": "Marcellus",
+        "options": [
+          {"value": "Marcellus", "label": "Marcellus (Display)"},
+          {"value": "Cormorant Garamond", "label": "Cormorant Garamond (Serif)"},
+          {"value": "Inter", "label": "Inter (Sans)"}
+        ]
+      },
+      {
+        "type": "select",
+        "id": "body_font",
+        "label": "Body Font",
+        "default": "Inter",
+        "options": [
+          {"value": "Inter", "label": "Inter (Sans)"},
+          {"value": "Cormorant Garamond", "label": "Cormorant Garamond (Serif)"},
+          {"value": "Marcellus", "label": "Marcellus (Display)"}
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_announcement_bar",
+        "label": "Show announcement bar",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "announcement_text_1",
+        "label": "Announcement text 1",
+        "default": "Pan-India Delivery"
+      },
+      {
+        "type": "text",
+        "id": "announcement_text_2",
+        "label": "Announcement text 2",
+        "default": "Online Ordering Available"
+      },
+      {
+        "type": "header",
+        "content": "Logo / Brand"
+      },
+      {
+        "type": "text",
+        "id": "brand_line_1",
+        "label": "Brand line 1",
+        "default": "ASHOK ANANT"
+      },
+      {
+        "type": "text",
+        "id": "brand_line_2",
+        "label": "Brand line 2",
+        "default": "NERLEKAR BOOKSELLERS"
+      },
+      {
+        "type": "text",
+        "id": "brand_line_3",
+        "label": "Brand line 3",
+        "default": "Pradnyesh Prakashan"
+      },
+      {
+        "type": "text",
+        "id": "brand_line_4",
+        "label": "Brand line 4",
+        "default": "Shri Krupa Enterprises"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image (optional)"
+      }
+    ]
+  },
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Store 1"
+      },
+      {
+        "type": "text",
+        "id": "store_1_name",
+        "label": "Store 1 name",
+        "default": "Ashok Anant Nerlekar Booksellers"
+      },
+      {
+        "type": "text",
+        "id": "store_1_address",
+        "label": "Store 1 address",
+        "default": "Budhwar Peth, Pune"
+      },
+      {
+        "type": "text",
+        "id": "store_1_phone",
+        "label": "Store 1 phone",
+        "default": "9309526618"
+      },
+      {
+        "type": "header",
+        "content": "Store 2"
+      },
+      {
+        "type": "text",
+        "id": "store_2_name",
+        "label": "Store 2 name",
+        "default": "Shri Krupa Enterprises"
+      },
+      {
+        "type": "text",
+        "id": "store_2_address",
+        "label": "Store 2 address",
+        "default": "Kasba Peth, Pune"
+      },
+      {
+        "type": "text",
+        "id": "store_2_phone",
+        "label": "Store 2 phone",
+        "default": "9309526618"
+      },
+      {
+        "type": "header",
+        "content": "Contact"
+      },
+      {
+        "type": "text",
+        "id": "contact_email",
+        "label": "Email",
+        "default": "nerlekarbooksellers@gmail.com"
+      },
+      {
+        "type": "text",
+        "id": "whatsapp_number",
+        "label": "WhatsApp number",
+        "default": "919309526618",
+        "info": "Include country code, no + or spaces"
+      }
+    ]
+  },
+  {
+    "name": "Product Cards",
+    "settings": [
+      {
+        "type": "range",
+        "id": "products_per_row",
+        "label": "Products per row (desktop)",
+        "min": 3,
+        "max": 5,
+        "step": 1,
+        "default": 4
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show vendor",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_type",
+        "label": "Show product type as language tag",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Social",
+    "settings": [
+      {
+        "type": "text",
+        "id": "whatsapp_link",
+        "label": "WhatsApp link",
+        "default": "https://wa.me/919309526618"
+      }
+    ]
+  }
+]

@@ -1,0 +1,150 @@
+{% comment %}
+  Product card snippet — matches the Bolt BookCard design
+  Usage: {% render 'product-card', product: product %}
+{% endcomment %}
+
+{% liquid
+  assign cover_colors = '#3D2B1F|#6B4A2F|#4A3526|#8B4513|#9A5A12|#8B7355|#2A1B12|#6B4A2F' | split: '|'
+  assign cover_accents = '#B8860B|#C9A227|#C0AB8E|#D4AF37|#E0C560|#D4AF37|#B8860B|#E0C560' | split: '|'
+  assign hash = 0
+  for i in (1..product.handle.size)
+    assign char = product.handle | slice: i, 1
+    assign code = char | code
+    assign hash = hash | plus: code | times: 31
+  endfor
+  assign color_idx = hash | modulo: 8
+  assign cover_color = cover_colors[color_idx]
+  assign cover_accent = cover_accents[color_idx]
+%}
+
+<div class="product-card card-warm">
+  <a href="{{ product.url }}" class="product-card__link">
+    <div class="product-card__cover-wrap">
+      {% if product.featured_image != blank %}
+        <div class="product-card__cover-img">
+          <img
+            src="{{ product.featured_image | image_url: width: 400 }}"
+            alt="{{ product.title | escape }}"
+            loading="lazy"
+            width="{{ product.featured_image.width }}"
+            height="{{ product.featured_image.height }}"
+          >
+          <div class="product-card__cover-spine"></div>
+        </div>
+      {% else %}
+        <div class="product-card__cover-fallback book-cover-fallback" style="background: {{ cover_color }};">
+          <div class="cover-border" style="border-color: {{ cover_accent }};"></div>
+          <div class="cover-divider" style="background: {{ cover_accent }};"></div>
+          <span class="cover-title" style="color: {{ cover_accent }}; font-size: 0.875rem;">{{ product.title | truncate: 40 }}</span>
+          <div class="cover-divider-bottom" style="background: {{ cover_accent }};"></div>
+          {% if product.vendor %}
+            <span class="cover-author" style="color: {{ cover_accent }};">{{ product.vendor | truncate: 20 }}</span>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="product-card__info">
+      <h3 class="product-card__title">{{ product.title | truncate: 50 }}</h3>
+      {% if settings.show_vendor and product.vendor != blank %}
+        <p class="product-card__vendor">by {{ product.vendor }}</p>
+      {% endif %}
+      <div class="product-card__tags">
+        {% if settings.show_type and product.type != blank %}
+          <span class="product-card__tag">{{ product.type }}</span>
+        {% endif %}
+        <span class="product-card__vendor-text">{{ product.vendor }}</span>
+      </div>
+
+      <div class="product-card__footer">
+        <div class="product-card__price-wrap">
+          <span class="product-card__price">{{ product.price | money }}</span>
+          {% if product.compare_at_price > product.price %}
+            <span class="product-card__compare">{{ product.compare_at_price | money }}</span>
+          {% endif %}
+        </div>
+
+        {% if product.available %}
+          <span class="product-card__badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Available
+          </span>
+        {% else %}
+          <span class="product-card__badge product-card__badge--soldout">Sold Out</span>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="product-card__hover-text">
+      View Details
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </div>
+  </a>
+</div>
+
+<style>
+.product-card {
+  padding: 1.25rem; cursor: pointer; display: flex; flex-direction: column;
+  position: relative; transition: all 0.5s ease;
+}
+.product-card:hover { box-shadow: var(--shadow-warm-lg); }
+.product-card__link { display: contents; }
+
+.product-card__cover-wrap {
+  display: flex; justify-content: center; margin-bottom: 1.25rem; padding-top: 0.5rem;
+}
+.product-card__cover-img {
+  position: relative; width: 160px; height: 240px; overflow: hidden;
+  box-shadow: var(--shadow-book); transition: transform 0.5s ease;
+}
+.product-card:hover .product-card__cover-img { transform: scale(1.03); }
+.product-card__cover-img img { width: 100%; height: 100%; object-fit: cover; }
+.product-card__cover-spine {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: rgba(0,0,0,0.2);
+}
+.product-card__cover-fallback {
+  width: 160px; height: 240px; transition: transform 0.5s ease;
+}
+.product-card:hover .product-card__cover-fallback { transform: scale(1.03); }
+
+.product-card__info { flex: 1; display: flex; flex-direction: column; }
+.product-card__title {
+  font-family: var(--font-serif); font-size: 1.0625rem; line-height: 1.3;
+  color: var(--ink-900); transition: color 0.2s ease;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.product-card:hover .product-card__title { color: var(--gold-700); }
+.product-card__vendor { font-size: 0.875rem; color: var(--ink-600); margin-top: 0.25rem; }
+
+.product-card__tags {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;
+  font-size: 0.75rem; color: var(--ink-500);
+}
+.product-card__tag {
+  border: 1px solid rgba(168, 145, 119, 0.2); padding: 0.125rem 0.5rem;
+}
+.product-card__vendor-text { color: var(--ink-400); }
+
+.product-card__footer {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(168, 145, 119, 0.1);
+}
+.product-card__price-wrap { display: flex; align-items: baseline; gap: 0.5rem; }
+.product-card__price { font-family: var(--font-serif); font-size: 1.25rem; color: var(--ink-900); }
+.product-card__compare { font-size: 0.875rem; color: var(--ink-400); text-decoration: line-through; }
+
+.product-card__badge {
+  display: flex; align-items: center; gap: 0.25rem;
+  font-size: 0.75rem; color: var(--ink-600);
+}
+.product-card__badge svg { color: #22863a; }
+.product-card__badge--soldout { color: var(--ink-500); }
+
+.product-card__hover-text {
+  position: absolute; top: 0.75rem; right: 0.75rem;
+  font-size: 0.75rem; color: var(--gold-700);
+  display: flex; align-items: center; gap: 0.25rem;
+  opacity: 0; transition: opacity 0.3s ease;
+}
+.product-card:hover .product-card__hover-text { opacity: 1; }
+</style>

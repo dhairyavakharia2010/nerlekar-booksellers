@@ -1,0 +1,169 @@
+<section class="page-section" data-section-id="{{ section.id }}">
+  {% if page.handle == 'contact' or template.name == 'page.contact' %}
+    {%- comment -%} Contact page hero {%- endcomment -%}
+    <div class="page-section__hero">
+      <div class="container-book">
+        <div class="page-section__eyebrow">
+          <div class="page-section__eyebrow-line"></div>
+          <span>Contact</span>
+        </div>
+        <h1 class="page-section__title">Get in Touch</h1>
+        <p class="page-section__subtitle">We're here to help with book enquiries, orders, and more.</p>
+      </div>
+    </div>
+
+    {%- comment -%} Contact methods {%- endcomment -%}
+    <div class="container-box" style="padding: 4rem 0;">
+      <div class="contact-methods">
+        <a href="tel:{{ settings.store_1_phone }}" class="contact-method card-warm">
+          <div class="contact-method__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold-400)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <h3 class="contact-method__title">Phone</h3>
+          <p class="contact-method__value">{{ settings.store_1_phone }}</p>
+        </a>
+        <a href="https://wa.me/{{ settings.whatsapp_number }}" target="_blank" rel="noopener noreferrer" class="contact-method card-warm">
+          <div class="contact-method__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold-400)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </div>
+          <h3 class="contact-method__title">WhatsApp</h3>
+          <p class="contact-method__value">{{ settings.store_1_phone }}</p>
+        </a>
+        <a href="mailto:{{ settings.contact_email }}" class="contact-method card-warm">
+          <div class="contact-method__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold-400)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <h3 class="contact-method__title">Email</h3>
+          <p class="contact-method__value">{{ settings.contact_email }}</p>
+        </a>
+      </div>
+
+      {%- comment -%} WhatsApp CTA {%- endcomment -%}
+      <div class="page-section__whatsapp-cta">
+        <a href="https://wa.me/{{ settings.whatsapp_number }}" target="_blank" rel="noopener noreferrer" class="page-section__whatsapp-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-400)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <span>Chat with Nerlekar Booksellers on WhatsApp</span>
+        </a>
+      </div>
+
+      {%- comment -%} Page content {%- endcomment -%}
+      {% if page.content != blank %}
+      <div class="page-section__content rte">
+        {{ page.content }}
+      </div>
+      {% endif %}
+
+      {%- comment -%} Store locations {%- endcomment -%}
+      <div class="page-section__stores">
+        <div class="page-section__stores-header">
+          <div class="divider-gold divider-gold-center"></div>
+          <h2 class="page-section__stores-title">Visit Our Stores</h2>
+          <p class="page-section__stores-subtitle">We have physical locations in Pune</p>
+        </div>
+        <div class="page-section__stores-grid">
+          <div class="store-card card-warm">
+            <div class="store-card__inner">
+              <div class="store-card__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-400)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <h3 class="store-card__name">{{ settings.store_1_name }}</h3>
+                <p class="store-card__address">{{ settings.store_1_address }}</p>
+                <p class="store-card__address">Pune, Maharashtra</p>
+                <a href="tel:{{ settings.store_1_phone }}" class="store-card__phone">{{ settings.store_1_phone }}</a>
+              </div>
+            </div>
+          </div>
+          <div class="store-card card-warm">
+            <div class="store-card__inner">
+              <div class="store-card__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-400)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <h3 class="store-card__name">{{ settings.store_2_name }}</h3>
+                <p class="store-card__address">{{ settings.store_2_address }}</p>
+                <p class="store-card__address">Pune, Maharashtra</p>
+                <a href="tel:{{ settings.store_2_phone }}" class="store-card__phone">{{ settings.store_2_phone }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  {% else %}
+    {%- comment -%} Standard page (about, shipping, returns, etc.) {%- endcomment -%}
+    <div class="page-section__hero">
+      <div class="container-book">
+        <div class="page-section__eyebrow">
+          <div class="page-section__eyebrow-line"></div>
+          <span>Information</span>
+        </div>
+        <h1 class="page-section__title">{{ page.title }}</h1>
+      </div>
+    </div>
+    <div class="container-book" style="padding: 4rem 0; max-width: 48rem;">
+      <div class="page-section__content rte">
+        {{ page.content }}
+      </div>
+      <a href="{{ routes.all_products_collection_url }}" class="btn-primary" style="margin-top: 2.5rem;">
+        Browse Books
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  {% endif %}
+</section>
+
+<style>
+.container-box { max-width: var(--max-width); margin: 0 auto; padding-left: 1rem; padding-right: 1rem; }
+@media (min-width: 640px) { .container-box { padding-left: 1.5rem; padding-right: 1.5rem; } }
+@media (min-width: 1024px) { .container-box { padding-left: 2.5rem; padding-right: 2.5rem; } }
+
+.page-section__hero { background: var(--ink-900); color: var(--parchment-100); padding: 4rem 0; }
+@media (min-width: 1024px) { .page-section__hero { padding: 6rem 0; } }
+.page-section__eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; }
+.page-section__eyebrow-line { height: 1px; width: 2.5rem; background: var(--gold-500); }
+.page-section__eyebrow span { font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-400); }
+.page-section__title { font-family: var(--font-display); font-size: 2.25rem; line-height: 1.2; }
+@media (min-width: 1024px) { .page-section__title { font-size: 3rem; } }
+.page-section__subtitle { margin-top: 1rem; font-size: 1.125rem; color: rgba(245, 239, 227, 0.5); }
+
+.contact-methods { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 2.5rem; }
+@media (min-width: 768px) { .contact-methods { grid-template-columns: repeat(3, 1fr); gap: 2rem; } }
+.contact-method { padding: 2rem; text-align: center; transition: box-shadow 0.3s ease; }
+.contact-method:hover { box-shadow: var(--shadow-warm-lg); }
+.contact-method__icon { width: 56px; height: 56px; background: var(--ink-800); margin: 0 auto 1.25rem; display: flex; align-items: center; justify-content: center; }
+.contact-method__title { font-family: var(--font-display); font-size: 1.125rem; color: var(--ink-900); letter-spacing: 0.025em; }
+.contact-method__value { margin-top: 0.5rem; font-size: 0.875rem; color: var(--ink-800); font-weight: 500; }
+
+.page-section__whatsapp-cta { max-width: 36rem; margin: 0 auto 4rem; }
+.page-section__whatsapp-link { display: flex; align-items: center; justify-content: center; gap: 0.75rem; background: var(--ink-800); color: var(--parchment-100); padding: 1rem 1.5rem; transition: background 0.2s ease; }
+.page-section__whatsapp-link:hover { background: var(--ink-900); }
+.page-section__whatsapp-link span { font-family: var(--font-display); font-size: 1rem; letter-spacing: 0.025em; }
+
+.page-section__content { color: var(--ink-700); line-height: 1.7; }
+.page-section__content p { margin-bottom: 1rem; }
+
+.page-section__stores { padding-top: 4rem; }
+.page-section__stores-header { text-align: center; margin-bottom: 3rem; }
+.page-section__stores-title { font-family: var(--font-display); font-size: 1.875rem; color: var(--ink-900); }
+@media (min-width: 1024px) { .page-section__stores-title { font-size: 2.25rem; } }
+.page-section__stores-subtitle { margin-top: 0.75rem; color: var(--ink-600); }
+.page-section__stores-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+@media (min-width: 768px) { .page-section__stores-grid { grid-template-columns: 1fr 1fr; gap: 2rem; } }
+
+.store-card { padding: 2rem; }
+.store-card__inner { display: flex; align-items: flex-start; gap: 1rem; }
+.store-card__icon { width: 48px; height: 48px; background: var(--ink-800); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.store-card__name { font-family: var(--font-display); font-size: 1.25rem; color: var(--ink-900); }
+.store-card__address { font-size: 0.875rem; color: var(--ink-600); margin-top: 0.25rem; }
+.store-card__phone { display: inline-block; margin-top: 0.75rem; font-size: 0.875rem; color: var(--ink-700); transition: color 0.2s ease; }
+.store-card__phone:hover { color: var(--gold-700); }
+</style>
+
+{% schema %}
+{
+  "name": "Page",
+  "settings": []
+}
+{% endschema %}

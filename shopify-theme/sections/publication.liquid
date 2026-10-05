@@ -1,0 +1,60 @@
+<div class="publication-section section-bg-dark">
+  <div class="container-book publication-section__inner">
+    <div class="publication-section__grid">
+      <div class="publication-section__text">
+        <div class="publication-section__eyebrow">
+          <div class="publication-section__eyebrow-line"></div>
+          <span>Our Publication</span>
+        </div>
+        <h2 class="publication-section__title">Pradnyesh Prakashan</h2>
+        <p class="publication-section__desc">
+          Pradnyesh Prakashan is the publishing imprint associated with Ashok Anant Nerlekar Booksellers, dedicated to preserving and disseminating religious, spiritual, and philosophical literature.
+        </p>
+        <p class="publication-section__desc">
+          Our publications span Marathi, Hindi, and Sanskrit &mdash; from foundational scriptures to scholarly commentaries &mdash; serving readers, students, and practitioners across India.
+        </p>
+        {% for collection in collections %}
+          {% if collection.title contains 'Pradnyesh' or collection.title contains 'pradnyesh' %}
+            <a href="{{ collection.url }}" class="publication-section__link link-underline">
+              Browse Pradnyesh Prakashan titles
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="publication-section__image-wrap">
+        <img src="https://images.pexels.com/photos/35098073/pexels-photo-35098073.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Leather-bound books" class="publication-section__image" loading="lazy">
+        <div class="publication-section__image-border"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.publication-section__inner { padding: 4rem 0; }
+@media (min-width: 1024px) { .publication-section__inner { padding: 6rem 0; } }
+.publication-section__grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
+@media (min-width: 1024px) { .publication-section__grid { grid-template-columns: 1fr 1fr; gap: 5rem; } }
+
+.publication-section__eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; }
+.publication-section__eyebrow-line { height: 1px; width: 2.5rem; background: var(--gold-500); }
+.publication-section__eyebrow span { font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-400); }
+
+.publication-section__title { font-family: var(--font-display); font-size: 1.875rem; color: var(--parchment-100); line-height: 1.2; }
+@media (min-width: 1024px) { .publication-section__title { font-size: 3rem; } }
+.publication-section__desc { margin-top: 1.5rem; font-size: 1.125rem; color: rgba(245, 239, 227, 0.5); line-height: 1.6; }
+.publication-section__link { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 2rem; font-size: 0.875rem; color: var(--gold-400); transition: color 0.2s ease; }
+.publication-section__link:hover { color: var(--gold-300); }
+
+.publication-section__image-wrap { position: relative; aspect-ratio: 4/3; overflow: hidden; }
+.publication-section__image { width: 100%; height: 100%; object-fit: cover; }
+.publication-section__image-border { position: absolute; inset: 0.75rem; border: 1px solid rgba(212, 175, 55, 0.2); pointer-events: none; }
+</style>
+
+{% schema %}
+{
+  "name": "Publication",
+  "settings": [],
+  "presets": [{ "name": "Publication" }]
+}
+{% endschema %}
