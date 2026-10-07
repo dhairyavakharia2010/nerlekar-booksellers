@@ -1,0 +1,54 @@
+<div class="language-discovery section-padding">
+  <div class="container-book">
+    <div class="language-discovery__header">
+      <div class="divider-gold divider-gold-center"></div>
+      <h2 class="language-discovery__title">Browse by Language</h2>
+      <p class="language-discovery__subtitle">Literature in the sacred and living languages of India</p>
+    </div>
+    <div class="language-discovery__grid">
+      {% assign languages = 'Marathi,Hindi,Sanskrit' | split: ',' %}
+      {% assign natives = 'मराठी,हिन्दी,संस्कृतम्' | split: ',' %}
+      {% assign descriptions = "The language of Maharashtra's saint-poets and devotional literature|The most widely spoken language of Indian spiritual texts|The ancient sacred language of the Vedas and scriptures" | split: '|' %}
+      {% assign i = 0 %}
+      {% for lang in languages %}
+        <a href="{{ routes.all_products_collection_url }}/tagged/{{ lang | downcase }}" class="language-card card-warm">
+          <div class="language-card__native">{{ natives[i] }}</div>
+          <h3 class="language-card__name">{{ lang }}</h3>
+          <p class="language-card__desc">{{ descriptions[i] }}</p>
+          <span class="language-card__browse">
+            Browse {{ lang }} books
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+        {% assign i = i | plus: 1 %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+.language-discovery__header { text-align: center; margin-bottom: 3rem; }
+.language-discovery__title { font-family: var(--font-display); font-size: 1.875rem; color: var(--ink-900); }
+@media (min-width: 1024px) { .language-discovery__title { font-size: 2.25rem; } }
+.language-discovery__subtitle { margin-top: 0.75rem; color: var(--ink-600); }
+
+.language-discovery__grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+@media (min-width: 768px) { .language-discovery__grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; } }
+
+.language-card { padding: 2rem 1.5rem; text-align: center; display: block; transition: all 0.3s ease; }
+@media (min-width: 1024px) { .language-card { padding: 2.5rem; } }
+.language-card:hover { box-shadow: var(--shadow-warm-lg); }
+.language-card__native { font-family: var(--font-serif); font-size: 2.5rem; color: var(--gold-700); margin-bottom: 0.75rem; }
+.language-card__name { font-family: var(--font-display); font-size: 1.25rem; color: var(--ink-900); letter-spacing: 0.025em; }
+.language-card__desc { margin-top: 0.5rem; font-size: 0.875rem; color: var(--ink-600); line-height: 1.6; }
+.language-card__browse { display: inline-flex; align-items: center; gap: 0.375rem; margin-top: 1.25rem; font-size: 0.75rem; color: var(--gold-700); opacity: 0; transition: opacity 0.3s ease; }
+.language-card:hover .language-card__browse { opacity: 1; }
+</style>
+
+{% schema %}
+{
+  "name": "Language Discovery",
+  "settings": [],
+  "presets": [{ "name": "Language Discovery" }]
+}
+{% endschema %}

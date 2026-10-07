@@ -1,0 +1,93 @@
+{
+  "general": {
+    "meta": {
+      "tags": "Tagged \"{ tags }\"",
+      "page": "Page { page }"
+    },
+    "search": {
+      "search": "Search",
+      "placeholder": "Search books, authors..."
+    },
+    "cart": {
+      "title": "Your Cart",
+      "empty": "Your cart is empty",
+      "checkout": "Proceed to Checkout",
+      "continue_shopping": "Continue Shopping",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "shipping_calculated": "Calculated at checkout",
+      "quantity": "Quantity",
+      "remove": "Remove",
+      "total": "Estimated Total"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "404": {
+      "title": "Page Not Found",
+      "subtext": "The page you are looking for doesn't exist or has been moved."
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Cart",
+      "sold_out": "Sold Out",
+      "unavailable": "Currently unavailable",
+      "available": "Available",
+      "buy_now": "Buy Now",
+      "quantity": "Quantity",
+      "description": "Description",
+      "details": "Book Details",
+      "shipping_info": "Shipping Information",
+      "related_books": "Related Books",
+      "save": "Save",
+      "by": "by"
+    }
+  },
+  "collections": {
+    "general": {
+      "title": "Browse Our Collection",
+      "subtitle": "Religious, spiritual, and Sanskrit literature in Marathi, Hindi, and Sanskrit",
+      "all_books": "All Books",
+      "books_found": "books found",
+      "book_found": "book found",
+      "no_books": "No books found",
+      "no_books_text": "Try adjusting your filters or browse all books",
+      "sort_by": "Sort By",
+      "filters": "Filters",
+      "categories": "Categories",
+      "language": "Language",
+      "featured": "Featured",
+      "price_low_high": "Price: Low to High",
+      "price_high_low": "Price: High to Low",
+      "title_az": "Title: A to Z"
+    }
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "We're here to help with book enquiries, orders, and more.",
+    "phone": "Phone",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "send_message": "Send a Message",
+    "send": "Send Message",
+    "visit_stores": "Visit Our Stores",
+    "stores_subtitle": "We have physical locations in Pune"
+  },
+  "shipping": {
+    "title": "Shipping & Delivery",
+    "info": "Delivery Information",
+    "pan_india": "We offer pan-India delivery for all orders.",
+    "dtdc": "Orders are shipped via DTDC courier service.",
+    "charges": "Shipping charges are according to the courier company and are based on the delivery location. There is no free shipping.",
+    "delivery_time": "Delivery time depends on the courier company and the destination."
+  },
+  "returns": {
+    "title": "Returns, Cancellations & Refunds",
+    "no_returns": "We do not accept returns.",
+    "no_exchanges": "We do not offer exchanges.",
+    "no_cancellation": "Orders cannot be cancelled once placed.",
+    "no_refunds": "No refunds are available."
+  }
+}

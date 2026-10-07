@@ -1,0 +1,63 @@
+<div class="hero-section">
+  <div class="hero-section__bg">
+    <img
+      src="https://images.pexels.com/photos/3860451/pexels-photo-3860451.jpeg?auto=compress&cs=tinysrgb&w=1920"
+      alt="Antique library"
+      class="hero-section__img"
+    >
+    <div class="hero-section__overlay"></div>
+  </div>
+  <div class="container-book hero-section__content">
+    <div class="hero-section__text">
+      <div class="hero-section__eyebrow">
+        <div class="hero-section__eyebrow-line"></div>
+        <span>Pradnyesh Prakashan</span>
+      </div>
+      <h1 class="hero-section__title">Sacred Wisdom<br><span class="hero-section__title-accent">in Every Page</span></h1>
+      <p class="hero-section__desc">
+        A curated collection of religious, spiritual, and Sanskrit literature in Marathi, Hindi, and Sanskrit &mdash; from the Vedas to contemporary commentaries.
+      </p>
+      <div class="hero-section__buttons">
+        <a href="{{ routes.all_products_collection_url }}" class="btn-gold-solid">Explore Books
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        {% for collection in collections limit: 1 %}
+          <a href="{{ collection.url }}" class="btn-secondary hero-section__btn-secondary">Browse Categories</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.hero-section { position: relative; overflow: hidden; background: var(--ink-900); }
+.hero-section__bg { position: absolute; inset: 0; }
+.hero-section__img { width: 100%; height: 100%; object-fit: cover; opacity: 0.3; }
+.hero-section__overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, var(--ink-900), rgba(31, 20, 13, 0.8), rgba(31, 20, 13, 0.4));
+}
+.hero-section__content { position: relative; padding: 5rem 0; }
+@media (min-width: 1024px) { .hero-section__content { padding: 8rem 0; } }
+.hero-section__text { max-width: 42rem; }
+.hero-section__eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; }
+.hero-section__eyebrow-line { height: 1px; width: 2.5rem; background: var(--gold-500); }
+.hero-section__eyebrow span { font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-400); }
+.hero-section__title {
+  font-family: var(--font-display); font-size: 2.25rem; line-height: 1.15;
+  color: var(--parchment-100); text-wrap: balance;
+}
+@media (min-width: 640px) { .hero-section__title { font-size: 3rem; } }
+@media (min-width: 1024px) { .hero-section__title { font-size: 3.75rem; } }
+.hero-section__title-accent { color: var(--gold-400); }
+.hero-section__desc {
+  margin-top: 1.5rem; font-size: 1.125rem; line-height: 1.6;
+  color: rgba(245, 239, 227, 0.5); max-width: 36rem;
+}
+.hero-section__buttons { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
+@media (min-width: 640px) { .hero-section__buttons { flex-direction: row; } }
+.hero-section__btn-secondary {
+  border-color: rgba(250, 246, 239, 0.3); color: var(--parchment-100);
+}
+.hero-section__btn-secondary:hover { background: var(--parchment-100); color: var(--ink-900); }
+</style>

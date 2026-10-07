@@ -1,0 +1,65 @@
+<div class="featured-products section-padding section-bg-warm">
+  <div class="container-book">
+    <div class="featured-products__header">
+      <div>
+        <div class="divider-gold"></div>
+        <h2 class="featured-products__title">Featured Books</h2>
+        <p class="featured-products__subtitle">A selection from our shelves</p>
+      </div>
+      <a href="{{ routes.all_products_collection_url }}" class="featured-products__view-all link-underline">
+        View All Books
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+    <div class="featured-products__grid grid-4">
+      {% for product in collections.frontpage.products limit: 8 %}
+        {% render 'product-card', product: product %}
+      {% else %}
+        {% for product in products limit: 8 %}
+          {% render 'product-card', product: product %}
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+.featured-products__header {
+  display: flex; flex-direction: column; gap: 1rem;
+  margin-bottom: 3rem;
+}
+@media (min-width: 640px) { .featured-products__header { flex-direction: row; align-items: flex-end; justify-content: space-between; } }
+.featured-products__title { font-family: var(--font-display); font-size: 1.875rem; color: var(--ink-900); }
+@media (min-width: 1024px) { .featured-products__title { font-size: 2.25rem; } }
+.featured-products__subtitle { margin-top: 0.5rem; color: var(--ink-600); }
+.featured-products__view-all {
+  display: flex; align-items: center; gap: 0.375rem;
+  font-size: 0.875rem; color: var(--gold-700); transition: color 0.2s ease;
+}
+.featured-products__view-all:hover { color: var(--gold-600); }
+</style>
+
+{% schema %}
+{
+  "name": "Featured Products",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "featured_collection",
+      "label": "Featured collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Products to show",
+      "min": 4,
+      "max": 12,
+      "step": 4,
+      "default": 8
+    }
+  ],
+  "presets": [
+    { "name": "Featured Products" }
+  ]
+}
+{% endschema %}

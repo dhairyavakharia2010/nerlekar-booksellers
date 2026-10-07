@@ -1,0 +1,74 @@
+<section class="search-page" data-section-id="{{ section.id }}">
+  <div class="search-page__header">
+    <div class="container-book">
+      <div class="search-page__eyebrow">
+        <div class="search-page__eyebrow-line"></div>
+        <span>Search</span>
+      </div>
+      <h1 class="search-page__title">Search Our Collection</h1>
+      <form action="{{ routes.search_url }}" method="get" role="search" class="search-page__form">
+        <input type="hidden" name="type" value="product">
+        <input type="text" name="q" value="{{ search.terms | escape }}" class="search-page__input" placeholder="Search books, authors..." autocomplete="off">
+        <button type="submit" class="search-page__submit">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="container-book search-page__body">
+    {% if search.performed %}
+      <p class="search-page__count">{{ search.results_count }} {% if search.results_count == 1 %}result{% else %}results{% endif %} for "{{ search.terms | escape }}"</p>
+
+      {% if search.results_count > 0 %}
+        <div class="search-page__grid grid-4">
+          {% for item in search.results %}
+            {% if item.object_type == 'product' %}
+              {% render 'product-card', product: item %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="search-page__empty">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--brown-400)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <p class="search-page__empty-title">No books found</p>
+          <p class="search-page__empty-text">Try different search terms or browse our full collection</p>
+          <a href="{{ routes.all_products_collection_url }}" class="btn-secondary">Browse All Books</a>
+        </div>
+      {% endif %}
+    {% else %}
+      <div class="search-page__intro">
+        <p>Search for books by title, author, or subject across our collection.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+.search-page__header { background: var(--ink-900); color: var(--parchment-100); padding: 3rem 0; }
+@media (min-width: 1024px) { .search-page__header { padding: 4rem 0; } }
+.search-page__eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+.search-page__eyebrow-line { height: 1px; width: 2.5rem; background: var(--gold-500); }
+.search-page__eyebrow span { font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-400); }
+.search-page__title { font-family: var(--font-display); font-size: 1.875rem; margin-bottom: 1.5rem; }
+@media (min-width: 1024px) { .search-page__title { font-size: 3rem; } }
+.search-page__form { display: flex; align-items: center; gap: 0.75rem; max-width: 36rem; border-bottom: 1px solid rgba(212, 175, 55, 0.3); padding-bottom: 0.75rem; }
+.search-page__input { flex: 1; background: transparent; border: none; outline: none; color: var(--parchment-100); font-size: 1.25rem; font-family: var(--font-serif); }
+.search-page__input::placeholder { color: rgba(245, 239, 227, 0.4); }
+.search-page__submit { color: var(--gold-400); padding: 0.25rem; }
+
+.search-page__body { padding: 2.5rem 0; }
+@media (min-width: 1024px) { .search-page__body { padding: 3.5rem 0; } }
+.search-page__count { font-size: 0.875rem; color: var(--ink-600); margin-bottom: 2rem; }
+.search-page__empty { text-align: center; padding: 5rem 0; }
+.search-page__empty-title { font-family: var(--font-serif); font-size: 1.25rem; color: var(--ink-800); margin-top: 1rem; }
+.search-page__empty-text { font-size: 0.875rem; color: var(--ink-500); margin-top: 0.5rem; margin-bottom: 1.5rem; }
+.search-page__intro { text-align: center; padding: 4rem 0; color: var(--ink-600); font-size: 1.125rem; }
+</style>
+
+{% schema %}
+{
+  "name": "Search",
+  "settings": []
+}
+{% endschema %}

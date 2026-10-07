@@ -1,0 +1,20 @@
+{
+  "sections": {
+    "hero": { "type": "hero" },
+    "featured-collections": { "type": "featured-collections" },
+    "featured-products": { "type": "featured-products" },
+    "language-discovery": { "type": "language-discovery" },
+    "publication": { "type": "publication" },
+    "store-locations": { "type": "store-locations" },
+    "why-shop": { "type": "why-shop" }
+  },
+  "order": [
+    "hero",
+    "featured-collections",
+    "featured-products",
+    "language-discovery",
+    "publication",
+    "store-locations",
+    "why-shop"
+  ]
+}
