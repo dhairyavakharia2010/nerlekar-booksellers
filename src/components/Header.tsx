@@ -19,9 +19,9 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { label: 'Shop', path: '/shop' },
-    { label: 'About', path: '/about' },
-    { label: 'Contact', path: '/contact' },
+    { label: 'पुस्तके', path: '/shop' },
+    { label: 'आमच्याबद्दल', path: '/about' },
+    { label: 'संपर्क', path: '/contact' },
   ];
 
   const isActive = (p: string) => path === p || (p === '/shop' && path.startsWith('/product'));
@@ -36,7 +36,7 @@ export default function Header() {
             <button
               onClick={() => setMobileMenuOpen(true)}
               className="lg:hidden p-1.5 -ml-1.5 text-ink-800 hover:text-gold-700 transition-colors"
-              aria-label="Open menu"
+              aria-label="मेनू उघडा"
             >
               <Menu className="w-5 h-5" strokeWidth={1.5} />
             </button>
@@ -80,7 +80,7 @@ export default function Header() {
                   onClick={() => navigate('/shop')}
                   className={`text-sm tracking-wide link-underline transition-colors ${isActive('/shop') ? 'text-gold-700' : 'text-ink-800 hover:text-gold-700'}`}
                 >
-                  Categories
+                  प्रकार
                 </button>
                 {categoriesOpen && (
                   <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3">
@@ -106,21 +106,21 @@ export default function Header() {
               <button
                 onClick={() => setSearchOpen(true)}
                 className="text-ink-800 hover:text-gold-700 transition-colors p-1"
-                aria-label="Search"
+                aria-label="शोध"
               >
                 <Search className="w-5 h-5" strokeWidth={1.5} />
               </button>
               <button
                 onClick={() => navigate('/account')}
                 className="hidden sm:block text-ink-800 hover:text-gold-700 transition-colors p-1"
-                aria-label="Account"
+                aria-label="खाते"
               >
                 <User className="w-5 h-5" strokeWidth={1.5} />
               </button>
               <button
                 onClick={() => setCartOpen(true)}
                 className="relative text-ink-800 hover:text-gold-700 transition-colors p-1"
-                aria-label="Cart"
+                aria-label="कृती"
               >
                 <ShoppingBag className="w-5 h-5" strokeWidth={1.5} />
                 {count > 0 && (
@@ -155,20 +155,20 @@ function MobileMenu() {
       <div className="fixed inset-0 bg-ink-900/40 z-50 lg:hidden" onClick={close} />
       <div className="fixed left-0 top-0 bottom-0 w-[85%] max-w-sm bg-parchment-50 z-50 lg:hidden overflow-y-auto animate-slide-in shadow-warm-lg">
         <div className="flex items-center justify-between p-5 border-b border-brown-500/15">
-          <span className="font-display text-base tracking-[0.15em] text-ink-900">Menu</span>
-          <button onClick={close} className="text-ink-800 p-1" aria-label="Close menu">
+          <span className="font-display text-base tracking-[0.15em] text-ink-900">मेनू</span>
+          <button onClick={close} className="text-ink-800 p-1" aria-label="मेनू बंद करा">
             <X className="w-5 h-5" strokeWidth={1.5} />
           </button>
         </div>
         <div className="p-5">
           <button onClick={() => go('/shop')} className="block w-full text-left py-3 text-ink-800 text-base border-b border-brown-500/10">
-            Shop
+            पुस्तके
           </button>
           <button
             onClick={() => setShowCategories(!showCategories)}
             className="flex items-center justify-between w-full py-3 text-ink-800 text-base border-b border-brown-500/10"
           >
-            <span>Categories</span>
+            <span>प्रकार</span>
             <ChevronRight className={`w-4 h-4 transition-transform ${showCategories ? 'rotate-90' : ''}`} />
           </button>
           {showCategories && (
@@ -185,13 +185,13 @@ function MobileMenu() {
             </div>
           )}
           <button onClick={() => go('/about')} className="block w-full text-left py-3 text-ink-800 text-base border-b border-brown-500/10">
-            About
+            आमच्याबद्दल
           </button>
           <button onClick={() => go('/contact')} className="block w-full text-left py-3 text-ink-800 text-base border-b border-brown-500/10">
-            Contact
+            संपर्क
           </button>
           <button onClick={() => go('/account')} className="block w-full text-left py-3 text-ink-800 text-base">
-            Account
+            खाते
           </button>
         </div>
       </div>

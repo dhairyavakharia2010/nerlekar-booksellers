@@ -42,12 +42,12 @@ export default function Toast() {
           className="inline-flex items-center gap-1.5 text-xs text-gold-400 hover:text-gold-300 transition-colors border-l border-parchment-100/20 pl-3 ml-1 whitespace-nowrap"
         >
           <ShoppingBag className="w-3.5 h-3.5" strokeWidth={1.5} />
-          View Cart
+          कृती पहा
         </a>
         <button
           onClick={() => setVisible(false)}
           className="text-parchment-300 hover:text-parchment-100 transition-colors ml-1"
-          aria-label="Dismiss"
+          aria-label="बंद करा"
         >
           <X className="w-4 h-4" strokeWidth={1.5} />
         </button>

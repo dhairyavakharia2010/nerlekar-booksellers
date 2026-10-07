@@ -21,7 +21,7 @@ export default function CategoryCard({ category }: { category: Category }) {
         <h3 className="font-serif text-lg text-parchment-100 leading-tight">{category.name}</h3>
         <p className="text-xs text-parchment-300 mt-1 line-clamp-2 leading-relaxed">{category.description}</p>
         <div className="flex items-center gap-1.5 mt-3 text-xs text-gold-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span>Explore</span>
+          <span>पहा</span>
           <ArrowRight className="w-3 h-3" />
         </div>
       </div>

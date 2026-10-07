@@ -20,13 +20,13 @@ export default function AboutPage() {
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-6">
               <div className="h-px w-10 bg-gold-500" />
-              <span className="text-xs tracking-[0.3em] uppercase text-gold-400">About Us</span>
+              <span className="text-xs tracking-[0.3em] uppercase text-gold-400">आमच्याबद्दल</span>
             </div>
             <h1 className="font-display text-4xl lg:text-5xl leading-tight">
-              Ashok Anant Nerlekar Booksellers
+              अशोक अनंत नेरळेकर बुकसेलर्स
             </h1>
             <p className="mt-4 text-lg text-parchment-300">
-              A bookstore dedicated to religious, spiritual, and Sanskrit literature.
+              धार्मिक, अध्यात्मिक आणि संस्कृत साहित्यासाठी समर्पित पुस्तकांचे दुकान.
             </p>
           </div>
         </div>
@@ -39,14 +39,14 @@ export default function AboutPage() {
             <div>
               <div className="divider-gold mb-4" />
               <h2 className="font-display text-3xl text-ink-900 leading-tight">
-                Our Bookstore
+                आमचे पुस्तकांचे दुकान
               </h2>
               <div className="mt-6 space-y-4 text-ink-700 leading-relaxed">
                 <p>
-                  Ashok Anant Nerlekar Booksellers is a bookstore specialising in religious, spiritual, and Sanskrit literature. Our collection spans the major traditions of Indian thought — from the Vedas and Upanishads to the great epics, from devotional poetry to philosophical treatises.
+                  अशोक अनंत नेरळेकर बुकसेलर्स हे धार्मिक, अध्यात्मिक आणि संस्कृत साहित्यातील पुस्तकांचे दुकान आहे. आमचा संग्रह भारतीय विचारांच्या प्रमुख परंपरांव्यापी आहे — वेद आणि उपनिषदांपासून महाकाव्यांपर्यंत, भक्ती काव्यापासून तात्त्विक ग्रंथांपर्यंत.
                 </p>
                 <p>
-                  We serve readers across India, offering books primarily in Marathi, Hindi, and Sanskrit. Whether you are a student of philosophy, a practitioner of rituals, or a seeker of spiritual knowledge, our shelves are curated to support your journey.
+                  आम्ही संपूर्ण भारतातील वाचकांना सेवा देतो, प्रामुख्याने मराठी, हिंदी आणि संस्कृत भाषेतील पुस्तके देतो. तुम्ही तत्त्वज्ञानाचे विद्यार्थी असाल, विधींचे साधक असाल, किंवा अध्यात्मिक ज्ञानाचे रास्ता असाल, आमची पुस्तके तुमच्या प्रवासासाठी निवडली आहेत.
                 </p>
               </div>
             </div>
@@ -77,21 +77,21 @@ export default function AboutPage() {
             <div className="order-1 lg:order-2">
               <div className="divider-gold mb-4" />
               <h2 className="font-display text-3xl text-ink-900 leading-tight">
-                Pradnyesh Prakashan
+                प्रज्ञेश प्रकाशन
               </h2>
               <div className="mt-6 space-y-4 text-ink-700 leading-relaxed">
                 <p>
-                  Pradnyesh Prakashan is the publishing imprint associated with our bookstore. It is dedicated to preserving and disseminating religious, spiritual, and philosophical literature in Marathi, Hindi, and Sanskrit.
+                  प्रज्ञेश प्रकाशन हे आमच्या पुस्तकांच्या दुकानाशी संलग्न प्रकाशन गट आहे. ते मराठी, हिंदी आणि संस्कृत भाषेतील धार्मिक, अध्यात्मिक आणि तात्त्विक साहित्याचे जतन आणि प्रसार करण्यासाठी समर्पित आहे.
                 </p>
                 <p>
-                  Through Pradnyesh Prakashan, we publish foundational scriptures, commentaries, and scholarly works — making the wisdom of Indian traditions accessible to contemporary readers.
+                  प्रज्ञेश प्रकाशनद्वारे, आम्ही मूळ ग्रंथ, भाष्ये आणि शास्त्रीय कार्ये प्रकाशित करतो — भारतीय परंपरांचे ज्ञान आधुनिक वाचकांपर्यंत पोहोचवतो.
                 </p>
               </div>
               <button
                 onClick={() => navigate('/shop?publication=Pradnyesh Prakashan')}
                 className="mt-8 inline-flex items-center gap-2 text-gold-700 hover:text-gold-600 text-sm tracking-wide link-underline"
               >
-                Browse Pradnyesh Prakashan titles <ArrowRight className="w-4 h-4" />
+                प्रज्ञेश प्रकाशनची पुस्तके पहा <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           </div>
@@ -103,13 +103,13 @@ export default function AboutPage() {
         <div className="container-book">
           <div className="text-center mb-12">
             <div className="divider-gold mx-auto mb-4" />
-            <h2 className="font-display text-3xl lg:text-4xl text-ink-900">What We Offer</h2>
+            <h2 className="font-display text-3xl lg:text-4xl text-ink-900">आम्ही काय देतो</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             {[
-              { icon: BookOpen, title: 'Curated Literature', desc: 'A carefully selected collection of religious and spiritual books across traditions and languages.' },
-              { icon: Globe, title: 'Three Languages', desc: 'Books in Marathi, Hindi, and Sanskrit, serving readers and scholars across India.' },
-              { icon: MapPin, title: 'Pune Stores', desc: 'Physical bookstores in Pune where you can browse our collection in person.' },
+              { icon: BookOpen, title: 'निवडलेले साहित्य', desc: 'परंपरा आणि भाषांमधील धार्मिक आणि अध्यात्मिक पुस्तकांचा काळजीपूर्वक निवडलेला संग्रह.' },
+              { icon: Globe, title: 'तीन भाषा', desc: 'मराठी, हिंदी आणि संस्कृत भाषेतील पुस्तके, संपूर्ण भारतातील वाचक आणि विद्वानांसाठी.' },
+              { icon: MapPin, title: 'पुणे दुकाने', desc: 'पुण्यातील वैयक्तिक दुकाने जिथे तुम्ही आमचा संग्रह प्रत्यक्ष पाहू शकता.' },
             ].map(item => (
               <div key={item.title} className="text-center px-4">
                 <div className="w-14 h-14 bg-ink-800 mx-auto flex items-center justify-center mb-5">
@@ -126,12 +126,12 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="py-16 lg:py-24 bg-ink-900 text-parchment-100">
         <div className="container-book text-center">
-          <h2 className="font-display text-3xl lg:text-4xl">Begin Your Reading Journey</h2>
+          <h2 className="font-display text-3xl lg:text-4xl">तुमचा वाचन प्रवास सुरू करा</h2>
           <p className="mt-3 text-parchment-300 max-w-xl mx-auto">
-            Explore our collection of sacred and spiritual literature.
+            पवित्र आणि अध्यात्मिक साहित्याचा आमचा संग्रह पहा.
           </p>
           <button onClick={() => navigate('/shop')} className="btn-primary bg-gold-600 hover:bg-gold-700 mt-8">
-            Browse Books <ArrowRight className="w-4 h-4" />
+            पुस्तके पहा <ArrowRight className="w-4 h-4" />
           </button>
         </div>
       </section>

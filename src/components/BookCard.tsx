@@ -21,7 +21,7 @@ export default function BookCard({ book, variant = 'grid' }: BookCardProps) {
   const handleAdd = (e: React.MouseEvent) => {
     e.stopPropagation();
     addItem(book.id);
-    showToast('Added to cart');
+    showToast('कृतीत जोडले');
   };
 
   const handleIncrease = (e: React.MouseEvent) => {
@@ -42,7 +42,7 @@ export default function BookCard({ book, variant = 'grid' }: BookCardProps) {
       <button
         onClick={handleDecrease}
         className="px-2.5 py-2.5 hover:bg-ink-900 transition-colors"
-        aria-label="Decrease quantity"
+        aria-label="घटक कमी करा"
       >
         <Minus className="w-3.5 h-3.5" strokeWidth={2} />
       </button>
@@ -50,7 +50,7 @@ export default function BookCard({ book, variant = 'grid' }: BookCardProps) {
       <button
         onClick={handleIncrease}
         className="px-2.5 py-2.5 hover:bg-ink-900 transition-colors"
-        aria-label="Increase quantity"
+        aria-label="घटक वाढवा"
       >
         <Plus className="w-3.5 h-3.5" strokeWidth={2} />
       </button>
@@ -67,7 +67,7 @@ export default function BookCard({ book, variant = 'grid' }: BookCardProps) {
         <div className="flex-1 flex flex-col">
           <div className="flex-1">
             <h3 className="font-serif text-lg text-ink-900 group-hover:text-gold-700 transition-colors">{book.title}</h3>
-            <p className="text-sm text-ink-600 mt-1">by {book.author}</p>
+            <p className="text-sm text-ink-600 mt-1">लेखक: {book.author}</p>
             <div className="flex flex-wrap gap-3 mt-2 text-xs text-ink-500">
               <span>{book.publication}</span>
               <span className="text-brown-500">·</span>
@@ -92,7 +92,7 @@ export default function BookCard({ book, variant = 'grid' }: BookCardProps) {
                 className="inline-flex items-center gap-1.5 bg-ink-800 text-parchment-100 px-4 py-2.5 text-xs font-medium tracking-wide hover:bg-ink-900 transition-colors"
               >
                 <Plus className="w-3.5 h-3.5" strokeWidth={2} />
-                Add to Cart
+                कृतीत जोडा
               </button>
             )}
           </div>
@@ -113,7 +113,7 @@ export default function BookCard({ book, variant = 'grid' }: BookCardProps) {
         <h3 className="font-serif text-lg text-ink-900 leading-snug group-hover:text-gold-700 transition-colors line-clamp-2">
           {book.title}
         </h3>
-        <p className="text-sm text-ink-600 mt-1">by {book.author}</p>
+        <p className="text-sm text-ink-600 mt-1">लेखक: {book.author}</p>
         <div className="flex flex-wrap gap-2 mt-2 text-xs text-ink-500">
           <span className="border border-brown-500/20 px-2 py-0.5">{book.language}</span>
           <span className="text-ink-400">{book.publication}</span>
@@ -133,14 +133,14 @@ export default function BookCard({ book, variant = 'grid' }: BookCardProps) {
               className="inline-flex items-center gap-1.5 bg-ink-800 text-parchment-100 px-3.5 py-2.5 text-xs font-medium tracking-wide hover:bg-ink-900 transition-colors"
             >
               <Plus className="w-3.5 h-3.5" strokeWidth={2} />
-              Add
+              जोडा
             </button>
           )}
         </div>
       </div>
       <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <span className="text-xs text-gold-700 flex items-center gap-1">
-          View Details <ArrowRight className="w-3 h-3" />
+          तपशील पहा <ArrowRight className="w-3 h-3" />
         </span>
       </div>
     </div>

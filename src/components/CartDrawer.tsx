@@ -32,10 +32,10 @@ export default function CartDrawer() {
         <div className="flex items-center justify-between px-5 py-4 border-b border-brown-500/15">
           <div className="flex items-center gap-2">
             <ShoppingBag className="w-5 h-5 text-ink-800" strokeWidth={1.5} />
-            <h2 className="font-serif text-lg text-ink-900">Your Cart</h2>
+            <h2 className="font-serif text-lg text-ink-900">तुमची कृती</h2>
             <span className="text-sm text-ink-500">({items.length})</span>
           </div>
-          <button onClick={close} className="text-ink-500 hover:text-ink-800 p-1" aria-label="Close cart">
+          <button onClick={close} className="text-ink-500 hover:text-ink-800 p-1" aria-label="कृती बंद करा">
             <X className="w-5 h-5" strokeWidth={1.5} />
           </button>
         </div>
@@ -44,10 +44,10 @@ export default function CartDrawer() {
         {items.length === 0 ? (
           <div className="flex-1 flex flex-col items-center justify-center px-8 text-center">
             <ShoppingBag className="w-12 h-12 text-brown-400" strokeWidth={1} />
-            <p className="font-serif text-lg text-ink-800 mt-4">Your cart is empty</p>
-            <p className="text-sm text-ink-500 mt-1">Browse our collection of spiritual literature</p>
+            <p className="font-serif text-lg text-ink-800 mt-4">तुमची कृती रिकामी आहे</p>
+            <p className="text-sm text-ink-500 mt-1">आमचे अध्यात्मिक साहित्य पहा</p>
             <button onClick={() => { navigate('/shop'); close(); }} className="btn-primary mt-6">
-              Explore Books
+              पुस्तके पहा
             </button>
           </div>
         ) : (
@@ -61,14 +61,14 @@ export default function CartDrawer() {
                     <BookCover book={book} size="sm" />
                     <div className="flex-1 min-w-0">
                       <h3 className="font-serif text-sm text-ink-900 leading-tight">{book.title}</h3>
-                      <p className="text-xs text-ink-500 mt-0.5">by {book.author}</p>
+                      <p className="text-xs text-ink-500 mt-0.5">लेखक: {book.author}</p>
                       <p className="text-xs text-ink-500">{book.language} · {book.publication}</p>
                       <div className="flex items-center justify-between mt-2.5">
                         <div className="flex items-center border border-brown-500/20">
                           <button
                             onClick={() => updateQuantity(item.bookId, item.quantity - 1)}
                             className="p-1.5 text-ink-600 hover:text-ink-900 transition-colors"
-                            aria-label="Decrease quantity"
+                            aria-label="घटक कमी करा"
                           >
                             <Minus className="w-3 h-3" />
                           </button>
@@ -76,7 +76,7 @@ export default function CartDrawer() {
                           <button
                             onClick={() => updateQuantity(item.bookId, item.quantity + 1)}
                             className="p-1.5 text-ink-600 hover:text-ink-900 transition-colors"
-                            aria-label="Increase quantity"
+                            aria-label="घटक वाढवा"
                           >
                             <Plus className="w-3 h-3" />
                           </button>
@@ -86,7 +86,7 @@ export default function CartDrawer() {
                           <button
                             onClick={() => removeItem(item.bookId)}
                             className="text-ink-400 hover:text-saffron-600 transition-colors"
-                            aria-label="Remove item"
+                            aria-label="घटक काढा"
                           >
                             <Trash2 className="w-3.5 h-3.5" />
                           </button>
@@ -101,16 +101,16 @@ export default function CartDrawer() {
             {/* Footer */}
             <div className="border-t border-brown-500/15 px-5 py-4 space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-ink-600">Subtotal</span>
+                <span className="text-sm text-ink-600">एकूण</span>
                 <span className="font-serif text-xl text-ink-900">₹{subtotal}</span>
               </div>
-              <p className="text-xs text-ink-500">Shipping calculated at checkout</p>
+              <p className="text-xs text-ink-500">शिपिंग चेकआउटवर गणले जाईल</p>
               <div className="flex flex-col gap-2.5">
                 <button onClick={goToCheckout} className="btn-primary w-full">
-                  Checkout <ArrowRight className="w-4 h-4" />
+                  चेकआउट <ArrowRight className="w-4 h-4" />
                 </button>
                 <button onClick={goToCart} className="btn-secondary w-full">
-                  View Full Cart
+                  संपूर्ण कृती पहा
                 </button>
               </div>
             </div>

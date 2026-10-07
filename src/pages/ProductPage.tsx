@@ -22,9 +22,9 @@ export default function ProductPage() {
   if (!book) {
     return (
       <div className="container-book py-20 text-center">
-        <h1 className="font-display text-3xl text-ink-900">Book not found</h1>
+        <h1 className="font-display text-3xl text-ink-900">पुस्तक सापडले नाही</h1>
         <button onClick={() => navigate('/shop')} className="btn-primary mt-6">
-          Back to Shop
+          पुस्तकांवर परत जा
         </button>
       </div>
     );
@@ -39,7 +39,7 @@ export default function ProductPage() {
     if (adding) return;
     setAdding(true);
     addItem(book.id, quantity);
-    showToast('Added to cart');
+    showToast('कृतीत जोडले');
     setTimeout(() => setAdding(false), 600);
   };
 
@@ -53,9 +53,9 @@ export default function ProductPage() {
       {/* Breadcrumb */}
       <div className="container-book py-4 border-b border-brown-500/10">
         <div className="flex items-center gap-2 text-sm text-ink-500">
-          <button onClick={() => navigate('/')} className="hover:text-gold-700 transition-colors">Home</button>
+          <button onClick={() => navigate('/')} className="hover:text-gold-700 transition-colors">मुख्यपृष्ठ</button>
           <ChevronRight className="w-3 h-3" />
-          <button onClick={() => navigate('/shop')} className="hover:text-gold-700 transition-colors">Shop</button>
+          <button onClick={() => navigate('/shop')} className="hover:text-gold-700 transition-colors">पुस्तके</button>
           <ChevronRight className="w-3 h-3" />
           {category && (
             <>
@@ -87,13 +87,13 @@ export default function ProductPage() {
               </span>
               {book.featured && (
                 <span className="text-xs tracking-[0.2em] uppercase text-saffron-600 border border-saffron-500/30 px-2.5 py-1">
-                  Featured
+                  विशेष
                 </span>
               )}
             </div>
 
             <h1 className="font-display text-3xl lg:text-4xl text-ink-900 leading-tight">{book.title}</h1>
-            <p className="mt-2 text-lg text-ink-600">by {book.author}</p>
+            <p className="mt-2 text-lg text-ink-600">लेखक: {book.author}</p>
 
             <div className="flex items-center gap-4 mt-4 text-sm text-ink-500">
               <span>{book.publication}</span>
@@ -107,7 +107,7 @@ export default function ProductPage() {
                 <>
                   <span className="text-lg text-ink-400 line-through">₹{book.originalPrice}</span>
                   <span className="text-sm text-saffron-600 font-medium">
-                    Save ₹{book.originalPrice - book.price}
+                    बचत ₹{book.originalPrice - book.price}
                   </span>
                 </>
               )}
@@ -115,7 +115,7 @@ export default function ProductPage() {
 
             <div className="mt-6 flex items-center gap-2 text-sm text-ink-600">
               <Check className="w-4 h-4 text-green-700" strokeWidth={2} />
-              <span>{book.availableForSale === false ? 'Currently unavailable' : 'Available'}</span>
+              <span>{book.availableForSale === false ? 'सध्या अनुपलब्ध' : 'उपलब्ध'}</span>
             </div>
 
             {/* Quantity + Add to cart */}
@@ -124,7 +124,7 @@ export default function ProductPage() {
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
                   className="p-3.5 text-ink-600 hover:text-ink-900 transition-colors"
-                  aria-label="Decrease quantity"
+                  aria-label="घटक कमी करा"
                 >
                   <Minus className="w-4 h-4" />
                 </button>
@@ -132,7 +132,7 @@ export default function ProductPage() {
                 <button
                   onClick={() => setQuantity(quantity + 1)}
                   className="p-3.5 text-ink-600 hover:text-ink-900 transition-colors"
-                  aria-label="Increase quantity"
+                  aria-label="घटक वाढवा"
                 >
                   <Plus className="w-4 h-4" />
                 </button>
@@ -143,7 +143,7 @@ export default function ProductPage() {
                 className="btn-primary flex-1 disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {adding ? <Loader2 className="w-4 h-4 animate-spin" /> : <ShoppingBag className="w-4 h-4" />}
-                {adding ? 'Adding...' : 'Add to Cart'}
+                {adding ? 'जोडत आहे...' : 'कृतीत जोडा'}
               </button>
             </div>
 
@@ -152,14 +152,14 @@ export default function ProductPage() {
               className="btn-gold w-full mt-3"
             >
               <Zap className="w-4 h-4" />
-              Buy Now
+              आता खरेदी करा
             </button>
 
             {/* Quick info */}
             <div className="mt-8 pt-6 border-t border-brown-500/10 space-y-3">
               <div className="flex items-center gap-3 text-sm text-ink-600">
                 <Truck className="w-4 h-4 text-gold-700 shrink-0" strokeWidth={1.5} />
-                <span>Pan-India delivery via DTDC · Shipping per courier rates</span>
+                <span>संपूर्ण भारतात DTDC द्वारे वितरण · शिपिंग कुरियर दरानुसार</span>
               </div>
               <div className="flex items-center gap-3 text-sm text-ink-600">
                 <BookOpen className="w-4 h-4 text-gold-700 shrink-0" strokeWidth={1.5} />
@@ -173,9 +173,9 @@ export default function ProductPage() {
         <div className="mt-14 lg:mt-20">
           <div className="flex gap-8 border-b border-brown-500/15">
             {([
-              { id: 'description', label: 'Description' },
-              { id: 'details', label: 'Book Details' },
-              { id: 'shipping', label: 'Shipping Information' },
+              { id: 'description', label: 'वर्णन' },
+              { id: 'details', label: 'पुस्तकाची माहिती' },
+              { id: 'shipping', label: 'शिपिंग माहिती' },
             ] as const).map(tab => (
               <button
                 key={tab.id}
@@ -199,11 +199,11 @@ export default function ProductPage() {
             {activeTab === 'details' && (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-4">
                 {[
-                  ['Title', book.title],
-                  ['Author', book.author || '—'],
-                  ['Publication', book.publication],
-                  ['Language', book.language],
-                  ['Format', book.format],
+                  ['शीर्षक', book.title],
+                  ['लेखक', book.author || '—'],
+                  ['प्रकाशन', book.publication],
+                  ['भाषा', book.language],
+                  ['स्वरूप', book.format],
                 ].map(([label, value]) => (
                   <div key={label} className="flex justify-between border-b border-brown-500/10 pb-2">
                     <span className="text-sm text-ink-500">{label}</span>
@@ -214,9 +214,9 @@ export default function ProductPage() {
             )}
             {activeTab === 'shipping' && (
               <div className="space-y-4 text-ink-700 leading-relaxed">
-                <p>We ship across India via DTDC courier service.</p>
-                <p>Shipping charges are according to the courier company and are based on the delivery location. There is no free shipping.</p>
-                <p>Delivery time depends on the courier company and the destination.</p>
+                <p>आम्ही DTDC कुरियर सेवेद्वारे संपूर्ण भारतात शिपिंग करतो.</p>
+                <p>शिपिंग शुल्क कुरियर कंपनीनुसार आणि वितरण स्थळानुसार असते. फ्री शिपिंग नाही.</p>
+                <p>वितरण वेळ कुरियर कंपनी आणि गंतव्यस्थानावर अवलंबून असतो.</p>
               </div>
             )}
           </div>
@@ -226,7 +226,7 @@ export default function ProductPage() {
         {relatedBooks.length > 0 && (
           <div className="mt-16 lg:mt-20">
             <div className="flex items-center gap-4 mb-8">
-              <h2 className="font-display text-2xl lg:text-3xl text-ink-900">Related Books</h2>
+              <h2 className="font-display text-2xl lg:text-3xl text-ink-900">संबंधित पुस्तके</h2>
               <div className="flex-1 h-px bg-brown-500/15" />
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 lg:gap-6">

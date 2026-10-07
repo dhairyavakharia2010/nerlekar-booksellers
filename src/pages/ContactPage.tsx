@@ -14,11 +14,11 @@ export default function ContactPage() {
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-6">
               <div className="h-px w-10 bg-gold-500" />
-              <span className="text-xs tracking-[0.3em] uppercase text-gold-400">Contact</span>
+              <span className="text-xs tracking-[0.3em] uppercase text-gold-400">संपर्क</span>
             </div>
-            <h1 className="font-display text-4xl lg:text-5xl leading-tight">Get in Touch</h1>
+            <h1 className="font-display text-4xl lg:text-5xl leading-tight">संपर्क करा</h1>
             <p className="mt-4 text-lg text-parchment-300">
-              We're here to help with book enquiries, orders, and more.
+              पुस्तकांच्या चौकशी, ऑर्डर आणि बर्‍याच गोष्टींसाठी आम्ही तुमची मदत करण्यासाठी येथे आहोत.
             </p>
           </div>
         </div>
@@ -29,15 +29,15 @@ export default function ContactPage() {
         <div className="container-book">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-10">
             {[
-              { icon: Phone, title: 'Phone', value: '9309526618', href: 'tel:9309526618' },
-              { icon: MessageCircle, title: 'WhatsApp', value: '9309526618', href: WHATSAPP_URL },
-              { icon: Mail, title: 'Email', value: 'nerlekarbooksellers@gmail.com', href: 'mailto:nerlekarbooksellers@gmail.com' },
+              { icon: Phone, title: 'फोन', value: '9309526618', href: 'tel:9309526618' },
+              { icon: MessageCircle, title: 'व्हॉट्सअ‍ॅप', value: '9309526618', href: WHATSAPP_URL },
+              { icon: Mail, title: 'ईमेल', value: 'nerlekarbooksellers@gmail.com', href: 'mailto:nerlekarbooksellers@gmail.com' },
             ].map(item => (
               <a
                 key={item.title}
                 href={item.href}
-                target={item.title === 'WhatsApp' ? '_blank' : undefined}
-                rel={item.title === 'WhatsApp' ? 'noopener noreferrer' : undefined}
+                target={item.title === 'व्हॉट्सअ‍ॅप' ? '_blank' : undefined}
+                rel={item.title === 'व्हॉट्सअ‍ॅप' ? 'noopener noreferrer' : undefined}
                 className="card-warm p-8 text-center hover:shadow-warm-lg transition-shadow"
               >
                 <div className="w-14 h-14 bg-ink-800 mx-auto flex items-center justify-center mb-5">
@@ -58,7 +58,7 @@ export default function ContactPage() {
               className="flex items-center justify-center gap-3 bg-ink-800 text-parchment-100 px-6 py-4 hover:bg-ink-900 transition-colors group"
             >
               <MessageCircle className="w-5 h-5 text-gold-400 group-hover:text-gold-300 transition-colors" strokeWidth={1.5} />
-              <span className="font-display text-base tracking-wide">Chat with Nerlekar Booksellers on WhatsApp</span>
+              <span className="font-display text-base tracking-wide">नेरळेकर बुकसेलर्ससह व्हॉट्सअ‍ॅपवर चॅट करा</span>
               <Send className="w-4 h-4 text-gold-400 group-hover:text-gold-300 transition-colors" strokeWidth={1.5} />
             </a>
           </div>
@@ -67,34 +67,34 @@ export default function ContactPage() {
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-10">
               <div className="divider-gold mx-auto mb-4" />
-              <h2 className="font-display text-2xl lg:text-3xl text-ink-900">Send a Message</h2>
-              <p className="mt-2 text-sm text-ink-600">We'll respond as soon as possible</p>
+              <h2 className="font-display text-2xl lg:text-3xl text-ink-900">संदेश पाठवा</h2>
+              <p className="mt-2 text-sm text-ink-600">आम्ही लवकरात लवकर उत्तर देऊ</p>
             </div>
             <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="label-book">Your Name</label>
-                  <input type="text" className="input-book" placeholder="Full name" />
+                  <label className="label-book">तुमचे नाव</label>
+                  <input type="text" className="input-book" placeholder="संपूर्ण नाव" />
                 </div>
                 <div>
-                  <label className="label-book">Phone</label>
+                  <label className="label-book">फोन</label>
                   <input type="tel" className="input-book" placeholder="+91" />
                 </div>
               </div>
               <div>
-                <label className="label-book">Email</label>
+                <label className="label-book">ईमेल</label>
                 <input type="email" className="input-book" placeholder="you@example.com" />
               </div>
               <div>
-                <label className="label-book">Subject</label>
-                <input type="text" className="input-book" placeholder="How can we help?" />
+                <label className="label-book">विषय</label>
+                <input type="text" className="input-book" placeholder="आम्ही कशी मदत करू शकतो?" />
               </div>
               <div>
-                <label className="label-book">Message</label>
-                <textarea rows={5} className="input-book resize-none" placeholder="Your message..." />
+                <label className="label-book">संदेश</label>
+                <textarea rows={5} className="input-book resize-none" placeholder="तुमचा संदेश..." />
               </div>
               <button type="submit" className="btn-primary w-full">
-                Send Message <ArrowRight className="w-4 h-4" />
+                संदेश पाठवा <ArrowRight className="w-4 h-4" />
               </button>
             </form>
           </div>
@@ -106,8 +106,8 @@ export default function ContactPage() {
         <div className="container-book">
           <div className="text-center mb-12">
             <div className="divider-gold mx-auto mb-4" />
-            <h2 className="font-display text-3xl lg:text-4xl text-ink-900">Visit Our Stores</h2>
-            <p className="mt-3 text-ink-600">We have physical locations in Pune</p>
+            <h2 className="font-display text-3xl lg:text-4xl text-ink-900">आमची दुकाने भेट द्या</h2>
+            <p className="mt-3 text-ink-600">पुण्यात आमची वैयक्तिक दुकाने आहेत</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {storeLocations.map(store => (
@@ -128,7 +128,7 @@ export default function ContactPage() {
                       {store.whatsapp && (
                         <div className="flex items-center gap-2 text-sm text-ink-700">
                           <MessageCircle className="w-4 h-4 text-gold-700" strokeWidth={1.5} />
-                          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold-700 transition-colors">WhatsApp</a>
+                          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold-700 transition-colors">व्हॉट्सअ‍ॅप</a>
                         </div>
                       )}
                       {store.email && (

@@ -6,18 +6,18 @@ export default function Footer() {
   const { navigate } = useRouter();
 
   const shopLinks = [
-    { label: 'All Books', path: '/shop' },
-    { label: 'Featured Books', path: '/shop?sort=featured' },
-    { label: 'Marathi Books', path: '/shop?language=Marathi' },
-    { label: 'Hindi Books', path: '/shop?language=Hindi' },
-    { label: 'Sanskrit Books', path: '/shop?language=Sanskrit' },
+    { label: 'सर्व पुस्तके', path: '/shop' },
+    { label: 'विशेष पुस्तके', path: '/shop?sort=featured' },
+    { label: 'मराठी पुस्तके', path: '/shop?language=Marathi' },
+    { label: 'हिंदी पुस्तके', path: '/shop?language=Hindi' },
+    { label: 'संस्कृत पुस्तके', path: '/shop?language=Sanskrit' },
   ];
 
   const infoLinks = [
-    { label: 'About Us', path: '/about' },
-    { label: 'Contact', path: '/contact' },
-    { label: 'Shipping & Delivery', path: '/shipping' },
-    { label: 'Returns & Cancellations', path: '/returns' },
+    { label: 'आमच्याबद्दल', path: '/about' },
+    { label: 'संपर्क', path: '/contact' },
+    { label: 'शिपिंग व वितरण', path: '/shipping' },
+    { label: 'परतावा व रद्दीकरण', path: '/returns' },
   ];
 
   return (
@@ -33,13 +33,13 @@ export default function Footer() {
               <div className="text-[10px] tracking-[0.3em] text-parchment-400 uppercase mt-0.5">Shri Krupa Enterprises</div>
             </div>
             <p className="text-sm text-parchment-300 leading-relaxed max-w-xs">
-              A bookstore dedicated to religious, spiritual, and Sanskrit literature in Marathi, Hindi, and Sanskrit.
+              धार्मिक, अध्यात्मिक आणि संस्कृत साहित्यासाठीचे मराठी, हिंदी आणि संस्कृत भाषेतील पुस्तकांचे दुकान.
             </p>
           </div>
 
           {/* Shop */}
           <div>
-            <h4 className="text-xs tracking-[0.2em] uppercase text-gold-400 mb-4">Shop</h4>
+            <h4 className="text-xs tracking-[0.2em] uppercase text-gold-400 mb-4">पुस्तके</h4>
             <ul className="space-y-2.5">
               {shopLinks.map(link => (
                 <li key={link.path}>
@@ -56,7 +56,7 @@ export default function Footer() {
 
           {/* Information */}
           <div>
-            <h4 className="text-xs tracking-[0.2em] uppercase text-gold-400 mb-4">Information</h4>
+            <h4 className="text-xs tracking-[0.2em] uppercase text-gold-400 mb-4">माहिती</h4>
             <ul className="space-y-2.5">
               {infoLinks.map(link => (
                 <li key={link.path}>
@@ -73,7 +73,7 @@ export default function Footer() {
 
           {/* Store info */}
           <div>
-            <h4 className="text-xs tracking-[0.2em] uppercase text-gold-400 mb-4">Visit Our Stores</h4>
+            <h4 className="text-xs tracking-[0.2em] uppercase text-gold-400 mb-4">आमची दुकाने भेट द्या</h4>
             <div className="space-y-4">
               {storeLocations.map(store => (
                 <div key={store.name}>
@@ -104,10 +104,10 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 border-t border-parchment-100/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-parchment-300">
-            © {new Date().getFullYear()} Ashok Anant Nerlekar Booksellers · Pradnyesh Prakashan · Shri Krupa Enterprises. All rights reserved.
+            © {new Date().getFullYear()} अशोक अनंत नेरळेकर बुकसेलर्स · प्रज्ञेश प्रकाशन · श्री कृपा एंटरप्रायझेस. सर्व हक्क राखीव.
           </p>
           <p className="text-xs text-parchment-400">
-            Religious & Spiritual Literature · Pune, India
+            धार्मिक व अध्यात्मिक साहित्य · पुणे, भारत
           </p>
         </div>
       </div>
